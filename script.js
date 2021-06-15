@@ -21,6 +21,23 @@ let weather = {
         document.querySelector(".temp").innerText = temp + "°C";
         document.querySelector(".humidity").innerText = "Humidity: " + humidity + "%";
         document.querySelector(".wind").innerText = "Wind Speed: " + speed + "km/h";
+        document.querySelector(".weather").classList.remove("loading");
+        document.body.style.backgroundImage = "url('https://source.unsplash.com/1600x900/?" + name + "')"
 
+    },
+    search: function(){
+        this.fetchweather(document.querySelector(".search-bar").value);
     }
 };
+
+document
+ .querySelector(".search button").addEventListener("click", function(){
+     weather.search();
+ });
+
+ document .querySelector(".search-bar").addEventListener("keyup", function (event){
+     if (event.key == "Enter") {
+         weather.search();
+     }
+ });
+ weather.fetchweather("Delhi");
